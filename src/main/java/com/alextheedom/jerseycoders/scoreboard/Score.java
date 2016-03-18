@@ -1,4 +1,4 @@
-package com.alextheedom.jerseycoders;
+package com.alextheedom.jerseycoders.scoreboard;
 
 /**
  * Created by atheedom on 13/01/2016.

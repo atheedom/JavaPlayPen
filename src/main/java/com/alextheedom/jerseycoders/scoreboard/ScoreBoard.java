@@ -1,4 +1,4 @@
-package com.alextheedom.jerseycoders;
+package com.alextheedom.jerseycoders.scoreboard;
 
 import java.util.ArrayList;
 import java.util.List;
