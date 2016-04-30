@@ -18,31 +18,31 @@ public class Story {
         Decision goesForwardTwoPaces = new Decision();
         Decision goesForwardOnePace = new Decision();
 
-        start.setNarative("Do you want to go do?");
+        start.setNarrative("What do you want to do?");
         start.setNextDecision("L", "Go left", goesLeft);
         start.setNextDecision("R", "Go right", goesRight);
 
-        goesLeft.setNarative("You have turned left. What do you want to do?");
+        goesLeft.setNarrative("You have turned left. What do you want to do?");
         goesLeft.setNextDecision("U", "Go up", goesUp);
         goesLeft.setNextDecision("D", "Go down", goesDown);
 
-        goesRight.setNarative("You have turned right. What do you want to do?");
+        goesRight.setNarrative("You have turned right. What do you want to do?");
         goesRight.setNextDecision("D", "Go down", goesDown);
         goesRight.setNextDecision("U", "Go up", goesUp);
 
-        goesUp.setNarative("You have gone up. What do you want to do?");
+        goesUp.setNarrative("You have gone up. What do you want to do?");
         goesUp.setNextDecision("D", "Go down", goesDown);
         goesUp.setNextDecision("U", "Go up", goesUp);
 
-        goesDown.setNarative("You have gone down. What do you want to do?");
+        goesDown.setNarrative("You have gone down. What do you want to do?");
         goesDown.setNextDecision("F", "Go forward two paces", goesForwardTwoPaces);
         goesDown.setNextDecision("V", "Go forward one pace", goesForwardOnePace);
 
-        goesForwardTwoPaces.setNarative("You have gone forward two paces. What do you want to do?");
+        goesForwardTwoPaces.setNarrative("You have gone forward two paces. What do you want to do?");
         goesForwardTwoPaces.setNextDecision("D", "Go down", goesDown);
         goesForwardTwoPaces.setNextDecision("U", "Go up", goesUp);
 
-        goesForwardOnePace.setNarative("You have gone forward one pace. What do you want to do?");
+        goesForwardOnePace.setNarrative("You have gone forward one pace. What do you want to do?");
         goesForwardOnePace.setNextDecision("F", "Go forward two paces", goesForwardTwoPaces);
         goesForwardOnePace.setNextDecision("V", "Go forward one pace", goesForwardOnePace);
 
@@ -54,7 +54,7 @@ public class Story {
 
     public static void navigate(Decision decision) {
 
-        System.out.println(decision.getNarative());
+        System.out.println(decision.getNarrative());
         for (String key : decision.getNextDecisions().keySet()) {
             System.out.println(key + " - " + decision.getKeyPath().get(key));
         }
