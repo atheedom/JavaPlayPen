@@ -1,4 +1,4 @@
-package com.alextheedom.jerseycoders.textbasedadventure;
+package com.alextheedom.jerseycoders.textbasedadventurefx;
 
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -7,7 +7,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 /**
@@ -39,35 +38,42 @@ public class FxGame extends Application {
 
         gc.setStroke( Color.BLACK );
         gc.setLineWidth(2);
-        Font theFont = Font.font( "Times New Roman", FontWeight.NORMAL, 20);
-        gc.setFont( theFont );
-        gc.fillText( "Hello, World!", 60, 50 );
 
+        // Font theFont = Font.font( "Times New Roman", FontWeight.NORMAL, 20);
+        // gc.setFont( theFont );
+        // gc.fillText( "Hello, World!", 60, 50 );
+        int y = 90;
 
+        // Font font = new Font("Verdana",24);
+        gc.setFont(Font.loadFont("file:resources/fonts/data-latin.ttf", 24));
+
+        // http://www.1001freefonts.com/computer-fonts.php
+
+        gc.fillText( currentDecision.getNarrative(), 30, 70 );
+        for (String key : currentDecision.getNextDecisions().keySet()) {
+            gc.fillText( key + " - " + currentDecision.getKeyPath().get(key), 30, y=y+20 );
+        }
 
         theScene.setOnKeyPressed(
                 e -> {
-                    gc.clearRect(0, 0, 512,512);
+                    gc.clearRect(0, 0, 400,400);
 
                     String choice = e.getCode().toString();
-//                    System.out.println(choice);
                     gc.fillText( "choice: " + choice, 30, 50 );
 
                     Decision decision = currentDecision.getNextDecision(choice);
 
-//                    System.out.println(decision.getNarrative());
                     gc.fillText( decision.getNarrative(), 30, 70 );
 
+                     int x = 90;
+
                     for (String key : decision.getNextDecisions().keySet()) {
-                        gc.fillText( key + " - " + decision.getKeyPath().get(key), 30, 90 );
-//                        System.out.println(key + " - " + decision.getKeyPath().get(key));
+                        gc.fillText( key + " - " + decision.getKeyPath().get(key), 30, x=x+20 );
                     }
 
                     currentDecision = decision;
+
                 });
-
-        gc.clearRect(0, 0, 512,512);
-
 
 
         theStage.show();
@@ -86,15 +92,15 @@ public class FxGame extends Application {
         Decision goesForwardOnePace = new Decision();
 
         start.setNarrative("Do you want to go do?");
-        start.setNextDecision("L", "Go left (Requires KNIFE)", goesLeft, "KNIFE", null);
-        start.setNextDecision("R", "Go right (Picks up MONEY)", goesRight, null, "MONEY");
+        start.setNextDecision("L", "Go left", goesLeft);
+        start.setNextDecision("R", "Go right", goesRight);
 
         goesLeft.setNarrative("You have turned left. What do you want to do?");
-        goesLeft.setNextDecision("U", "Go up", goesUp, null, null);
+        goesLeft.setNextDecision("U", "Go up", goesUp);
         goesLeft.setNextDecision("D", "Go down", goesDown);
 
         goesRight.setNarrative("You have turned right. What do you want to do?");
-        goesRight.setNextDecision("D", "Go down (Requires MONEY)", goesDown, "MONEY", null);
+        goesRight.setNextDecision("D", "Go down", goesDown);
         goesRight.setNextDecision("U", "Go up", goesUp);
 
         goesUp.setNarrative("You have gone up. What do you want to do?");

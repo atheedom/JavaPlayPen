@@ -14,10 +14,10 @@ public class Recv {
 
     public static void main(String[] argv) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("192.168.99.100");
+        factory.setHost("localhost");
         factory.setUsername("guest");
         factory.setPassword("guest");
-        factory.setPort(5692);
+        factory.setPort(5672);
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
