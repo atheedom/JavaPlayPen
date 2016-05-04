@@ -1,5 +1,6 @@
 package com.alextheedom.jerseycoders.textbasedadventurefx;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -24,14 +25,14 @@ public class FxGame extends Application {
     }
 
     @Override
-    public void start(Stage theStage) {
+    public void start(Stage theStage) throws InterruptedException {
         theStage.setTitle( "FX Game" );
 
         Group root = new Group();
         Scene theScene = new Scene( root );
         theStage.setScene( theScene );
 
-        Canvas canvas = new Canvas( 400, 400 );
+        Canvas canvas = new Canvas( 800, 400 );
         root.getChildren().add( canvas );
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -45,9 +46,17 @@ public class FxGame extends Application {
         int y = 90;
 
         // Font font = new Font("Verdana",24);
-        gc.setFont(Font.loadFont("file:resources/fonts/data-latin.ttf", 24));
+        gc.setFont(Font.loadFont("file:resources/fonts/ANGEL___.otf", 80));
 
         // http://www.1001freefonts.com/computer-fonts.php
+        theStage.show();
+
+
+
+
+        // starWarifyIt(gc, theStage);
+
+
 
         gc.fillText( currentDecision.getNarrative(), 30, 70 );
         for (String key : currentDecision.getNextDecisions().keySet()) {
@@ -56,19 +65,19 @@ public class FxGame extends Application {
 
         theScene.setOnKeyPressed(
                 e -> {
-                    gc.clearRect(0, 0, 400,400);
+                    gc.clearRect(0, 0, 800,400);
 
                     String choice = e.getCode().toString();
                     gc.fillText( "choice: " + choice, 30, 50 );
 
                     Decision decision = currentDecision.getNextDecision(choice);
 
-                    gc.fillText( decision.getNarrative(), 30, 70 );
+                    gc.fillText( decision.getNarrative(), 30, 80 );
 
                      int x = 90;
 
                     for (String key : decision.getNextDecisions().keySet()) {
-                        gc.fillText( key + " - " + decision.getKeyPath().get(key), 30, x=x+20 );
+                        gc.fillText( key + " - " + decision.getKeyPath().get(key), 30, x=x+30 );
                     }
 
                     currentDecision = decision;
@@ -76,7 +85,7 @@ public class FxGame extends Application {
                 });
 
 
-        theStage.show();
+
     }
 
 
@@ -120,5 +129,32 @@ public class FxGame extends Application {
         goesForwardOnePace.setNextDecision("V", "Go forward one pace", goesForwardOnePace);
 
         FxGame.start = start;
+    }
+
+
+    private void starWarifyIt(GraphicsContext gc, Stage theStage) throws InterruptedException {
+
+
+
+
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+
+                 gc.clearRect(0, 0, 800,400);
+
+                for (int y = 0; y < 400; y=y+5){
+                    gc.fillText( "Hello ", 30, y );
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }.start();
+
+
+
     }
 }
