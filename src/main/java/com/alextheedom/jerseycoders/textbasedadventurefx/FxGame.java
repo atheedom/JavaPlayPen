@@ -40,23 +40,11 @@ public class FxGame extends Application {
         gc.setStroke( Color.BLACK );
         gc.setLineWidth(2);
 
-        // Font theFont = Font.font( "Times New Roman", FontWeight.NORMAL, 20);
-        // gc.setFont( theFont );
-        // gc.fillText( "Hello, World!", 60, 50 );
         int y = 90;
 
-        // Font font = new Font("Verdana",24);
-        gc.setFont(Font.loadFont("file:resources/fonts/ANGEL___.otf", 80));
+        gc.setFont(Font.loadFont("file:resources/fonts/star_jedi/starjout/Starjout.ttf", 20));
 
-        // http://www.1001freefonts.com/computer-fonts.php
         theStage.show();
-
-
-
-
-        // starWarifyIt(gc, theStage);
-
-
 
         gc.fillText( currentDecision.getNarrative(), 30, 70 );
         for (String key : currentDecision.getNextDecisions().keySet()) {
@@ -83,8 +71,6 @@ public class FxGame extends Application {
                     currentDecision = decision;
 
                 });
-
-
 
     }
 
