@@ -1,6 +1,5 @@
 package com.alextheedom.jerseycoders.textbasedadventurefx;
 
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -117,31 +116,5 @@ public class FxGame extends Application {
 
         FxGame.start = start;
     }
-
-
-    private void starWarifyIt(GraphicsContext gc, Stage theStage) throws InterruptedException {
-
-
-
-
-        new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-
-                 gc.clearRect(0, 0, 800,400);
-
-                for (int y = 0; y < 400; y=y+5){
-                    gc.fillText( "Hello ", 30, y );
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }.start();
-
-
-
-    }
+    
 }
