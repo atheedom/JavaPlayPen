@@ -44,6 +44,7 @@ public class FxGame extends Application {
 
         gc.setFont(Font.loadFont("file:resources/fonts/star_jedi/starjout/Starjout.ttf", 20));
 
+        // http://www.1001freefonts.com/computer-fonts.php
         theStage.show();
 
         gc.fillText( currentDecision.getNarrative(), 30, 70 );
