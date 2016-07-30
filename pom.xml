@@ -41,10 +41,23 @@
         <!-- Maven plugins -->
         <maven-war-plugin.version>2.4</maven-war-plugin.version>
 
+        <hystrix-core.version>1.4.10</hystrix-core.version>
     </properties>
 
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.google.auto.value</groupId>
+            <artifactId>auto-value</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-core</artifactId>
+            <version>${hystrix-core.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.goebl</groupId>
